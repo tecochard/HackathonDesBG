@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Invisible
-  m_Shader: {fileID: 4800000, guid: f2b35ae8a53131743964dd7b712cfe3d, type: 3}
+  m_Name: LightBeam
+  m_Shader: {fileID: 4800000, guid: 195f31102e7ea5b43b5694dfe11e44da, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
