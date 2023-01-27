@@ -19,18 +19,20 @@ public class CheckCombination : MonoBehaviour
     void Update()
     {
         string combination = text1.text + text2.text + text3.text + text4.text;
+        print(combination);
         if (combination == "4592")
         {
-            enigmeSolved = true;
-            VictorySound.Play();
+            StartCoroutine(FinEnigme());
         }
+    }
 
-        // On change d'EV quand la musique est finie
-        //if (enigmeSolved && !VictorySound.isPlaying) 
-        if (enigmeSolved) 
-        { 
-            room1.SetActive(false);
-            room2.SetActive(true);
-        }
+    IEnumerator FinEnigme()
+    {
+        VictorySound.Play();
+        yield return new WaitForSeconds(3.5f);
+
+        // gestion de l'EV
+        room1.SetActive(false);
+        room2.SetActive(true);
     }
 }
