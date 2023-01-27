@@ -15,6 +15,7 @@ public class CheckCombination : MonoBehaviour
     void Update()
     {
         string combination = text1.text + text2.text + text3.text + text4.text;
+        print(combination);
         if (combination == "4592")
         {
             room1.SetActive(false);
