@@ -17,8 +17,7 @@ public class ClockManager : MonoBehaviour
     public AudioSource VictorySound;
 
     [Header("Objets pour Enigme3")]
-    public GameObject Object1;
-    public GameObject Object2;
+    public GameObject ObjectsEnigme3;
 
     private int angleSeconds;
     private int angleMinutes;
@@ -33,16 +32,8 @@ public class ClockManager : MonoBehaviour
         // Si les aiguilles sont bien placees, on debloque la solution
         if (angleSeconds == 270 && angleMinutes == 135 && angleHours == 0)
         {
-            ALaBonneHeure=true;            
-            VictorySound.Play();
-        }
-
-        // On change d'EV quand la musique est finie
-        if (ALaBonneHeure && !VictorySound.isPlaying)
-        {
-            // gestion de l'EV
-            EV2.SetActive(false);
-            EV3.SetActive(true);
+            ALaBonneHeure = true;
+            StartCoroutine(FinEnigme());
         }
     }
 
@@ -66,5 +57,18 @@ public class ClockManager : MonoBehaviour
         angleHours += 45;
         if (!ALaBonneHeure && angleHours > 316) { angleHours = 0; }
         pointerHours.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angleHours);
+    }
+
+    IEnumerator FinEnigme()
+    {
+        VictorySound.Play();
+        yield return new WaitForSeconds(3.5f);
+
+        // On active les objets de l'enigme 3
+        ObjectsEnigme3.SetActive(true);
+
+        // Gestion de l'EV
+        EV2.SetActive(false);
+        EV3.SetActive(true);        
     }
 }

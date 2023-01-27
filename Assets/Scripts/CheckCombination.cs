@@ -22,15 +22,17 @@ public class CheckCombination : MonoBehaviour
         print(combination);
         if (combination == "4592")
         {
-            enigmeSolved = true;
-            VictorySound.Play();
+            StartCoroutine(FinEnigme());
         }
+    }
 
-        // On change d'EV quand la musique est finie
-        if (enigmeSolved && !VictorySound.isPlaying) 
-        { 
-            room1.SetActive(false);
-            room2.SetActive(true);
-        }
+    IEnumerator FinEnigme()
+    {
+        VictorySound.Play();
+        yield return new WaitForSeconds(3.5f);
+
+        // gestion de l'EV
+        room1.SetActive(false);
+        room2.SetActive(true);
     }
 }
