@@ -9,7 +9,7 @@ public class TextButton : MonoBehaviour
     public Button suivant; // Assign the button in the inspector
     public Button precedent;
     public Button commencer;
-    private int currentValue = 1;
+    private int currentValue = 0;
     public TextMeshProUGUI Text1;
     public TextMeshProUGUI Text2;
     public TextMeshProUGUI Text3;
@@ -17,6 +17,7 @@ public class TextButton : MonoBehaviour
     public TextMeshProUGUI Text5;
     public TextMeshProUGUI Text6;
     public TextMeshProUGUI Text7;
+    public RawImage img;
 
 
 
@@ -25,6 +26,7 @@ public class TextButton : MonoBehaviour
     {
         suivant.onClick.AddListener(IncrementText);
         precedent.onClick.AddListener(DecrementText);
+        Text1.enabled = false;
         Text2.enabled = false;
         Text3.enabled = false;
         Text4.enabled = false;
@@ -47,9 +49,13 @@ public class TextButton : MonoBehaviour
 
         }
         switch (currentValue) {
+            case 0:
+            img.enabled = true;
+            Text7.enabled = false;
+            break;
             case 1:
             Text1.enabled = true;
-            Text7.enabled = false;
+            img.enabled = false;
             break;
             case 2:
             Text2.enabled = true;
@@ -82,11 +88,15 @@ public class TextButton : MonoBehaviour
     private void DecrementText()
     {
         currentValue--;
-        if (currentValue == 0)
+        if (currentValue == -1)
         {
-            currentValue = 1;
+            currentValue = 0;
         }
         switch (currentValue) {
+            case 0:
+            img.enabled = true;
+            Text1.enabled = false;
+            break;
             case 1:
             Text1.enabled = true;
             Text2.enabled = false;
@@ -113,7 +123,7 @@ public class TextButton : MonoBehaviour
             break;
             case 7:
             Text7.enabled = true;
-            Text1.enabled = false;
+            img.enabled = false;
             break;
         }
     }
