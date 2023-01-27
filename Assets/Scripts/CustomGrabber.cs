@@ -110,7 +110,7 @@ public class CustomGrabber : MonoBehaviour
         if (grabbedCollider == null)
         {
             fwd = Vector3.Normalize(RayDir.position - RayOrigin.position);
-            if(Physics.Raycast(RayOrigin.position, fwd, out hit, 0.5f, 1 << 5))
+            if(Physics.Raycast(RayOrigin.position, fwd, out hit, 0.5f, (1 << 5)|(1<<6) ))
             {
                 GameObject hitUI = hit.collider.gameObject;
                 if (hitUI.GetComponent<Button>() != null)
