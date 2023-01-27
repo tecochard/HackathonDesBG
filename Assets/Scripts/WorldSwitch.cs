@@ -4,41 +4,30 @@ using UnityEngine;
 
 public class WorldSwitch : MonoBehaviour
 {
-    public GameObject enableTargetObject;
-    public GameObject disableTargetObject;
+    public GameObject oldObject;
+    public GameObject modernObject;
     public string triggertag;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(triggertag))
-        {   
-            enableTargetObject.gameObject.SetActive(false);
-            disableTargetObject.gameObject.SetActive(true);
+        {
+            oldObject.gameObject.SetActive(false);
+            modernObject.gameObject.SetActive(true);
         }
         
+        if (other.gameObject.layer == 7)
+        {
+            
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag(triggertag))
         {
-            enableTargetObject.gameObject.SetActive(true);
-            disableTargetObject.gameObject.SetActive(false);
-        }
-        
-    }
-
-    
+            oldObject.gameObject.SetActive(true);
+            modernObject.gameObject.SetActive(false);
+        }        
+    }    
 }
