@@ -14,11 +14,11 @@ public class IncrementTextOnButtonClick : MonoBehaviour
 
     private void Start()
     {
-        incrementButton.onClick.AddListener(IncrementText);
-        decrementButton.onClick.AddListener(DecrementText);
+        //incrementButton.onClick.AddListener(IncrementText);
+        //decrementButton.onClick.AddListener(DecrementText);
     }
 
-    private void IncrementText()
+    public void IncrementText()
     {
         currentValue++;
         if (currentValue == 10)
@@ -28,7 +28,7 @@ public class IncrementTextOnButtonClick : MonoBehaviour
         displayText.text = currentValue.ToString();
     }
 
-    private void DecrementText()
+    public void DecrementText()
     {
         currentValue--;
         if (currentValue == -1)
