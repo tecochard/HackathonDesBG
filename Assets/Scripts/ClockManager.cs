@@ -9,6 +9,13 @@ public class ClockManager : MonoBehaviour
     public GameObject pointerMinutes;
     public GameObject pointerHours;
 
+    // Gestion de l'EV
+    public GameObject EV2;
+    public GameObject EV3;
+
+    // Son de victoire
+    public AudioSource VictorySound;
+
     private int angleSeconds;
     private int angleMinutes;
     private int angleHours;
@@ -24,6 +31,11 @@ public class ClockManager : MonoBehaviour
         {
             Debug.Log("Bien ouej magueule");
             ALaBonneHeure=true;
+
+            // gestion de l'EV
+            EV2.SetActive(false);
+            EV3.SetActive(true);
+            VictorySound.Play();
         }
     }
 
