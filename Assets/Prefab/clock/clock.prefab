@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 8606582931936207412}
   - component: {fileID: 4747518660812260722}
   - component: {fileID: 2669815946382928256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SphereMinutes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 669129370860030158}
   - component: {fileID: 1124704521340835712}
   - component: {fileID: 3673001869754792954}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SphereHours
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 157753061740022190}
   - component: {fileID: 3356926030854856540}
   - component: {fileID: 1617911660085718863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SphereSeconds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
