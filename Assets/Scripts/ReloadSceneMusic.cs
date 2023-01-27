@@ -21,12 +21,12 @@ public class ReloadSceneMusic : MonoBehaviour
         Song.loop = false;
     }
 
-    void Update()
-    {
-        // Quand la musique s'arrete, on recharge la scene
-        if (!Song.isPlaying)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
+    //void Update()
+    //{
+    //    // Quand la musique s'arrete, on recharge la scene
+    //    if (!Song.isPlaying)
+    //    {
+    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //    }
+    //}
 }

@@ -23,6 +23,8 @@ public class KeyIsGood : MonoBehaviour
         if (Key1_2.activeSelf == true && Key2_2.activeSelf == true && Key3_1.activeSelf == true)
         {
             Debug.Log("Vous avez gagné !");
+            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }

@@ -12,6 +12,8 @@ public class CheckCombination : MonoBehaviour
     public TMP_Text text3;
     public TMP_Text text4;
 
+    public string winCombination;
+
     public AudioSource VictorySound;
 
     private bool enigmeSolved = false;
@@ -19,17 +21,17 @@ public class CheckCombination : MonoBehaviour
     void Update()
     {
         string combination = text1.text + text2.text + text3.text + text4.text;
-        print(combination);
-        if (combination == "4592")
+        if (combination == winCombination)
         {
+            //VictorySound.Play();
             StartCoroutine(FinEnigme());
         }
     }
 
     IEnumerator FinEnigme()
     {
-        VictorySound.Play();
-        yield return new WaitForSeconds(3.5f);
+        
+        yield return new WaitForSeconds(1.0f);
 
         // gestion de l'EV
         room1.SetActive(false);
