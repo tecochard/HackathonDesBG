@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomGrabber : MonoBehaviour
 {
@@ -8,10 +9,21 @@ public class CustomGrabber : MonoBehaviour
     OVRInput.Controller m_controller;
     float grabAxis;
     float triggerAxis;
-    bool isGrab;
-    bool isTrigger;
+    bool isGrabbed;
+    bool isTriggered;
     Collider grabbedCollider;
-    
+
+    Ray ray;
+    RaycastHit hit;
+
+    [SerializeField]
+    GameObject RayCylinder;
+    [SerializeField]
+    Transform RayOrigin;
+    [SerializeField]
+    Transform RayDir;
+
+    Vector3 fwd;
 
     public enum Hand
     {
@@ -38,8 +50,10 @@ public class CustomGrabber : MonoBehaviour
 
         grabAxis = 0;
         triggerAxis = 0;
-        isGrab = false;
-        isTrigger = false;
+        isGrabbed = false;
+        isTriggered = false;
+
+        fwd = Vector3.Normalize(RayDir.position - RayOrigin.position);
     }
 
     // Update is called once per frame
@@ -51,20 +65,20 @@ public class CustomGrabber : MonoBehaviour
         grabAxis = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
         triggerAxis = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller);
 
-        if (grabAxis > 0.5 && !isGrab)
+        if (grabAxis > 0.5 && !isGrabbed)
         {
             Grab();
         }
-        else if (grabAxis < 0.3 && isGrab)
+        else if (grabAxis < 0.3 && isGrabbed)
         {
             ReleaseGrab();
         }
 
-        if (triggerAxis > 0.5 && !isGrab)
+        if (triggerAxis > 0.5 && !isTriggered)
         {
             Trigger();
         }
-        else if (triggerAxis < 0.3 && isGrab)
+        else if (triggerAxis < 0.3 && isTriggered)
         {
             RealeaseTrigger();
         }
@@ -76,7 +90,7 @@ public class CustomGrabber : MonoBehaviour
         {
             grabbedCollider = colliderList[0];
             grabbedCollider.GetComponent<CustomGrabbable>().Grab(transform);
-            isGrab = true;
+            isGrabbed = true;
         }
         
     }
@@ -86,17 +100,32 @@ public class CustomGrabber : MonoBehaviour
         {
             grabbedCollider.GetComponent<CustomGrabbable>().ReleaseGrab();
             grabbedCollider = null;
-            isGrab = false;
+            isGrabbed = false;
         }
         
     }
     void Trigger()
     {
+        isTriggered = true;
+        if (grabbedCollider == null)
+        {
+            fwd = Vector3.Normalize(RayDir.position - RayOrigin.position);
+            if(Physics.Raycast(RayOrigin.position, fwd, out hit, 0.5f, 1 << 5))
+            {
+                GameObject hitUI = hit.collider.gameObject;
+                if (hitUI.GetComponent<Button>() != null)
+                {
+                    hitUI.GetComponent<Button>().onClick.Invoke();
+                }
+            }
+            
 
+
+        }
     }
     void RealeaseTrigger()
     {
-
+        isTriggered = false;
     }
 
 
