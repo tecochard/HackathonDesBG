@@ -19,7 +19,6 @@ public class CheckCombination : MonoBehaviour
     void Update()
     {
         string combination = text1.text + text2.text + text3.text + text4.text;
-        print(combination);
         if (combination == "4592")
         {
             enigmeSolved = true;
@@ -27,7 +26,8 @@ public class CheckCombination : MonoBehaviour
         }
 
         // On change d'EV quand la musique est finie
-        if (enigmeSolved && !VictorySound.isPlaying) 
+        //if (enigmeSolved && !VictorySound.isPlaying) 
+        if (enigmeSolved) 
         { 
             room1.SetActive(false);
             room2.SetActive(true);
