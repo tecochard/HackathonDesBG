@@ -483,6 +483,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36503b6c637d34be49e2aadc73682447, type: 3}
+--- !u!114 &1474431762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5861880969156174409, guid: 9e3b5fd0f3f29460ea6538d43e966d15, type: 3}
+  m_PrefabInstance: {fileID: 2954660132575168289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2954660132575168289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +501,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2954660131115547628, guid: 9e3b5fd0f3f29460ea6538d43e966d15, type: 3}
+      propertyPath: img
+      value: 
+      objectReference: {fileID: 1474431762}
     - target: {fileID: 2954660131115547629, guid: 9e3b5fd0f3f29460ea6538d43e966d15, type: 3}
       propertyPath: m_Name
       value: Contexte
