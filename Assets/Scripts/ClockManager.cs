@@ -11,10 +11,14 @@ public class ClockManager : MonoBehaviour
 
     // Gestion de l'EV
     public GameObject EV2;
-    public GameObject EV3;
+    public GameObject EV3; 
 
     // Son de victoire
     public AudioSource VictorySound;
+
+    [Header("Objets pour Enigme3")]
+    public GameObject Object1;
+    public GameObject Object2;
 
     private int angleSeconds;
     private int angleMinutes;
