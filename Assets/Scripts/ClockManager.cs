@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class ClockManager : MonoBehaviour
 {
-    // 12:25:45 (1/4 + 1/8)
+    // Bonne heure pour l'horloge : 12h25min45sec
     public GameObject pointerSeconds;
     public GameObject pointerMinutes;
     public GameObject pointerHours;
 
+    // Gestion de l'EV
+    public GameObject EV2;
+    public GameObject EV3; 
+
+    // Son de victoire
+    public AudioSource VictorySound;
+
+    [Header("Objets pour Enigme3")]
+    public GameObject Object1;
+    public GameObject Object2;
+
     private int angleSeconds;
     private int angleMinutes;
     private int angleHours;
+
+    // Si l'enigme est résolue
+    private bool ALaBonneHeure = false;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +33,16 @@ public class ClockManager : MonoBehaviour
         // Si les aiguilles sont bien placees, on debloque la solution
         if (angleSeconds == 270 && angleMinutes == 135 && angleHours == 0)
         {
-            Debug.Log("Bien ouej magueule");
+            ALaBonneHeure=true;            
+            VictorySound.Play();
+        }
+
+        // On change d'EV quand la musique est finie
+        if (ALaBonneHeure && !VictorySound.isPlaying)
+        {
+            // gestion de l'EV
+            EV2.SetActive(false);
+            EV3.SetActive(true);
         }
     }
 
@@ -27,21 +50,21 @@ public class ClockManager : MonoBehaviour
     {
         Debug.Log("tourne secondes");
         angleSeconds += 45;
-        if (angleSeconds > 316) { angleSeconds = 0; }
+        if (!ALaBonneHeure && angleSeconds > 316) { angleSeconds = 0; }
         pointerSeconds.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angleSeconds);
     }
 
     public void RotateMinutes()
     {
         angleMinutes += 45;
-        if (angleMinutes > 316) { angleMinutes = 0; }
+        if (!ALaBonneHeure && angleMinutes > 316) { angleMinutes = 0; }
         pointerMinutes.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angleMinutes);
     }
 
     public void RotateHours()
     {
         angleHours += 45;
-        if (angleHours > 316) { angleHours = 0; }
+        if (!ALaBonneHeure && angleHours > 316) { angleHours = 0; }
         pointerHours.transform.localEulerAngles = new Vector3(0.0f, 0.0f, angleHours);
     }
 }
